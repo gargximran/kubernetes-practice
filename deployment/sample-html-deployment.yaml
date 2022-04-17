@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sample-html
+  name: sample-html
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-html
+  template:
+    metadata:
+      labels:
+        app: sample-html
+    spec:
+      containers:
+      - image: gargximran/sample-html
+        name: sample-html

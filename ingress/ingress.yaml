@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: test-ingress-resource
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "x.com"
+    http:
+      paths:
+      - backend:
+          service:
+            name: sample-html-service-cluster-ip
+            port:
+              number: 80
+        path: /helo
+        pathType: Prefix
